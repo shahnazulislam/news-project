@@ -5,7 +5,7 @@ session_unset();
 
 session_destroy();
 
-header("location: http://localhost/news-template/admin");
+header("location: http://localhost/news-template/admin/");
 
 
 ?>
