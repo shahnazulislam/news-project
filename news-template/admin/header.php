@@ -33,7 +33,7 @@ header("location:http://localhost/news-template/admin");
 					<!-- /LOGO -->
 					<!-- LOGO-Out -->
 					<div class="col-md-offset-8  col-md-2">
-						<a href="logout.php" class="admin-logout" ><?php echo $_SESSION['username']?> / logout</a>
+						<a href="logout.php" class="admin-logout" ><?php echo $_SESSION['username']?>/logout</a>
 					</div>
 					<!-- /LOGO-Out -->
 				</div>
