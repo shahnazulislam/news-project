@@ -8,15 +8,15 @@ if (isset($_FILES['fileToUpload'])) {
     $file_size = $_FILES['fileToUpload']['size'];
     $file_tmp = $_FILES['fileToUpload']['tmp_name'];
     $file_type = $_FILES['fileToUpload']['type'];
-    $file_exe = strtolower(end(explode('.',$file_name)));
+    $file_ext = strtolower(end(explode('.',$file_name)));
     $extentions = array("jpeg","jpg","png");
 
-    if(in_array($file_exe, $extentions) === false){
+    if(in_array($file_ext, $extentions) === false){
         $errors[] = "this extentions file not allowd, Please choose a jpg or png file";
     }
 
     if ($file_size > 2097152) {
-        $errors [] = "file size must be 2mb or lowr";
+        $errors [] = "file size must be 2mb or lower";
     }
 
     if (empty($errors) == true) {
@@ -36,15 +36,13 @@ $category    = mysqli_real_escape_string($conn, $_POST['category']);
 $date        = date("d, m, y");
 $author      = $_SESSION['user_id'];
 
-$sql = "INSERT INTO post(title, discription, category, post_date, author, post_img) VALUES('$title', '$discription', $category, '$post_date', '$author', '$post_name',)";
+$sql = "INSERT INTO post(title, description, category, post_date, author, post_img) VALUES('$title', '$description', $category, '$date', '$author', '$file_name');";
 
 $sql .= "UPDATE category SET post = post + 1 WHERE category_id = $category";
 
 if (mysqli_multi_query($conn,$sql)) {
-    header("Location: http://localhost/nese-template/admin/post.php");
-}else
-{
+    header("Location: http://localhost/news-template/admin/post.php");
+}else{
     echo "<div class ='alert alert-da1nger'>query failde</div>";
 }
-
 ?>

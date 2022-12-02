@@ -77,4 +77,3 @@ header("Location: http://localhost/news-template/admin/users.php");
 	</div>
 </div>
 <?php include "footer.php"; ?>
-<!-- php_check_syntax -->
