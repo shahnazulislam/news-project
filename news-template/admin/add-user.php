@@ -1,11 +1,11 @@
- <?php
- include "header.php"; 
+<?php
+include "header.php";
 
-  if ($_SESSION['user_role'] == 0) {
+if ($_SESSION['user_role'] == 0) {
   header("Location:http://localhost/news-template/admin/post.php");
-  }
+}
 
- if (isset($_POST['save'])) {
+if (isset($_POST['save'])) {
   include "config.php";
   $firstName   = mysqli_real_escape_string($conn, $_POST['fname']);
   $lastName    = mysqli_real_escape_string($conn, $_POST['lname']);
@@ -18,7 +18,7 @@
 
   if (mysqli_num_rows($result) > 0) {
     echo 'this username alrady exisist';
-  }else{
+  } else {
     $sql1 = "INSERT INTO user (first_name, last_name, username, password, role) VALUES('$firstName', '$lastName', '$userName', '$pass', '$role')";
     if (mysqli_query($conn, $sql1)) {
       header("Location: http://localhost/news-template/admin/users.php");
@@ -35,7 +35,7 @@
       </div>
       <div class="col-md-offset-3 col-md-6">
         <!-- Form Start -->
-        <form  action="<?php $_SERVER['PHP_SELF'];?>" method ="POST" autocomplete="off">
+        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" autocomplete="off">
           <div class="form-group">
             <label>First Name</label>
             <input type="text" name="fname" class="form-control" placeholder="First Name" required>
@@ -55,21 +55,18 @@
           </div>
           <div class="form-group">
             <label>User Role</label>
-            <select class="form-control" name="role" >
+            <select class="form-control" name="role">
               <option value="0">Normal User</option>
               <option value="1">Admin</option>
             </select>
           </div>
-          <input type="submit"  name="save" class="btn btn-primary" value="Save" required />
+          <input type="submit" name="save" class="btn btn-primary" value="Save" required />
         </form>
         <!-- Form End-->
       </div>
     </div>
   </div>
 </div>
-<div>
-  <input type="text" placeholder="shakil">
-</div>
-<?php 
+<?php
 include "footer.php";
 ?>
