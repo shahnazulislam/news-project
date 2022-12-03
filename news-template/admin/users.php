@@ -38,8 +38,7 @@ if ($_SESSION['user_role'] == 0) {
 						</thead>
 						<tbody>
 							<?php
-							while ($row = mysqli_fetch_assoc($result)) {
-							?>
+							while ($row = mysqli_fetch_assoc($result)) { ?>
 								<tr>
 									<td class='id'><?php echo $row['user_id']; ?></td>
 									<td><?php echo $row['first_name'] . " " . $row['last_name']; ?></td>
