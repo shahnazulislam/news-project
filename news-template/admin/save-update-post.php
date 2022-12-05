@@ -29,8 +29,16 @@ if (empty($_FILES['new-image']['name'])) {
     }
     
 }
-echo $sql = "UPDATE post SET title ='{$_POST["post_title"]}', description ='{$_POST["postdesc"]}', category = {$_POST["category"]}, post_img ='{$file_name}' WHERE post_id = {$_POST["post_id"]}";
+$sql = "UPDATE post SET title ='{$_POST["post_title"]}', description ='{$_POST["postdesc"]}', category = {$_POST["category"]}, post_img ='{$file_name}' WHERE post_id = {$_POST["post_id"]}";
 
-// $result = mysqli_query($conn, $sql) or die('Query not found');
+$result = mysqli_query($conn, $sql);
+if($result){
+header("Location:http://localhost/news-template/admin/post.php");
+}else{
+    echo "Query faild";
+}
+
+
+
 
 ?>
