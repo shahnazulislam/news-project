@@ -22,7 +22,7 @@
 
         ?>
         <!-- Form for show edit-->
-        <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <form action="save-update-post.php" method="POST" enctype="multipart/form-data" autocomplete="off">
           <div class="form-group">
             <input type="hidden" name="post_id"  class="form-control" value="<?php echo $row['post_id']; ?>" placeholder="">
           </div>
@@ -46,10 +46,16 @@
               $result1 = mysqli_query($conn, $sql1) or die('Query not found');
 
               if (mysqli_num_rows($result1) > 0) {
-                  while ($row1 = mysqli_fetch_assoc($result1)) {
-                      echo "<option value = '{$row1["category_id"]}'>{$row1['category_name']}</option>";
-
+                while ($row1 = mysqli_fetch_assoc($result1)) {
+                  if ($row['category'] == $row1['category_id']) {
+                    $selected = "selected";
+                  }else{
+                    $selected = "";
+                  
+                    echo "<option value = '{$row1["category_id"]}'>{$row1['category_name']}</option>";
                   }
+
+                }
               }
             ?>
             </select>
@@ -57,13 +63,14 @@
           <div class="form-group">
             <label for="">Post image</label>
             <input type="file" name="new-image">
+            <?php echo $row['post_img']; ?>
             <img  src="upload/<?php echo $row['post_img']; ?>" height="150px">
-            <!-- <input type="hidden" name="old-image" value=""> -->
+            <input type="hidden" name="old_image" value="<?php echo $row['post_img']?>">
           </div>
           <input type="submit" name="submit" class="btn btn-primary" value="Update" />
         </form>
         <?php 
-            }
+        }
           }else{
             echo "Result not found";
           }
