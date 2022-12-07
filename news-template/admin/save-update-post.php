@@ -42,3 +42,4 @@ header("Location:http://localhost/news-template/admin/post.php");
 
 
 ?>
+
