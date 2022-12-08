@@ -21,46 +21,45 @@
 
 				if ($_SESSION['user_role'] == '1') {
 					$sql = "SELECT user.user_id, user.username, post.post_id, post.post_date, post.category, category.category_id, post.title, category.category_name FROM post
-				LEFT JOIN category ON post.category = category.category_id
-				LEFT JOIN user ON post.author = user.user_id ORDER BY post.post_id DESC LIMIT $offset, $limit";
+					LEFT JOIN category ON post.category = category.category_id
+					LEFT JOIN user ON post.author = user.user_id ORDER BY post.post_id DESC LIMIT $offset, $limit";
 				}
 
 				if ($_SESSION['user_role'] == '0') {
 					$sql = "SELECT user.user_id, user.username, post.post_id, post.post_date, post.category, post.title, category.category_name FROM post
-				LEFT JOIN category ON post.category = category.category_id
-				LEFT JOIN user ON post.author = user.user_id
-				WHERE post.author = {$_SESSION['user_id']}
-				ORDER BY post.post_id DESC LIMIT $offset, $limit";
+					LEFT JOIN category ON post.category = category.category_id
+					LEFT JOIN user ON post.author = user.user_id
+					WHERE post.author = {$_SESSION['user_id']}
+					ORDER BY post.post_id DESC LIMIT $offset, $limit";
 				}
 
 				$result = mysqli_query($conn, $sql) or die('Query error');
 				if (mysqli_num_rows($result) > 0) {
 				?>
-
-				<table class="content-table">
-					<thead>
-						<th>S.No.</th>
-						<th>Title</th>
-						<th>Category</th>
-						<th>Date</th>
-						<th>Author</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</thead>
-					<tbody>
-						<?php while ($row = mysqli_fetch_assoc($result)) { ?>
-						<tr>
-							<td class='id'><?php echo $row['post_id']; ?></td>
-							<td><?php echo $row['title']; ?></td>
-							<td><?php echo $row['category_name']; ?></td>
-							<td><?php echo $row['post_date']; ?></td>
-							<td><?php echo $row['username']; ?></td>
-							<td class='edit'><a href='update-post.php?id=<?php echo $row["post_id"]; ?>'><i class='fa fa-edit'></i></a></td>
-							<td class='delete'><a href='delete-post.php?id=<?php echo $row["post_id"]; ?>&catid=<?php echo $row["post.category"]; ?>'><i class='fa fa-trash-o'></i></a></td>
-						</tr>
-						<?php } ?>
-					</tbody>
-				</table>
+					<table class="content-table">
+						<thead>
+							<th>S.No.</th>
+							<th>Title</th>
+							<th>Category</th>
+							<th>Date</th>
+							<th>Author</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</thead>
+						<tbody>
+							<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+								<tr>
+									<td class='id'><?php echo $row['post_id']; ?></td>
+									<td><?php echo $row['title']; ?></td>
+									<td><?php echo $row['category_name']; ?></td>
+									<td><?php echo $row['post_date']; ?></td>
+									<td><?php echo $row['username']; ?></td>
+									<td class='edit'><a href='update-post.php?id=<?php echo $row["post_id"]; ?>'><i class='fa fa-edit'></i></a></td>
+									<td class='delete'><a href='delete-post.php?id=<?php echo $row["post_id"]; ?>&catid=<?php echo $row["post.category"]; ?>'><i class='fa fa-trash-o'></i></a></td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
 				<?php
 				}
 				$sql1 = "SELECT * FROM post";
@@ -80,8 +79,8 @@
 						}
 						echo '<li class = "' . $active . '"><a href="post.php?page=' . $i . '">' . $i . '</a></li>';
 					}
-					if ($total_page >= $page) {
-							echo '<li><a href="post.php?page=' . ($page + 1) . '">next</a></li>';
+					if ($total_page > $page) {
+						echo '<li><a href="post.php?page=' . ($page + 1) . '">next</a></li>';
 					}
 					echo '</ul>';
 				}
