@@ -34,12 +34,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <ul class='menu'>
-                    <li><a href='category.php'>Business</a></li>
-                    <li><a href='category.php'>Entertainment</a></li>
-                    <li><a href='category.php'>Sports</a></li>
-                    <li><a href='category.php'>Politics</a></li>
-                </ul>
+                <?php
+                include "config.php";
+                $home = "http://localhost/news-template";
+
+                if(isset($_GET['cid'])){
+                    $cat_id = $_GET['cid'];
+                }
+
+                $sql = "SELECT * FROM category WHERE post > 0";
+                $result = mysqli_query($conn, $sql) or die("Query faild: category");
+                if (mysqli_num_rows($result) > 0) {
+                    $active = "";
+                
+                    echo"<ul class='menu'>";
+                    echo "<li><a href='$home'>Home</a></li>";
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if(isset($_GET['cid'])){
+                            if ($row['category_id'] == $cat_id) {
+                                $active = "active";
+                            }else{
+                                $active = "";
+                            }
+                        }
+                        echo "<li><a class='{$active}' href='category.php?cid={$row['category_id']}'>{$row['category_name']}</a></li>";
+                    }
+                    echo "</ul>";
+                
+                    
+                }
+                ?>
             </div>
         </div>
     </div>
