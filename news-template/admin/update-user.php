@@ -11,7 +11,6 @@ $user_id  = mysqli_real_escape_string($conn, ($_POST['user_id']));
 $fname    = mysqli_real_escape_string($conn, ($_POST['f_name']));
 $lname    = mysqli_real_escape_string($conn, ($_POST['l_name']));
 $username = mysqli_real_escape_string($conn, ($_POST['username']));
-// $pass     = mysqli_real_escape_string($conn, md5($_POST['password']));
 $role     = mysqli_real_escape_string($conn,($_POST['role']));
 $sql = "UPDATE user SET first_name = '$fname', last_name = '$lname', username = '$username', role = '$role' WHERE user_id = $user_id";
 $result = mysqli_query($conn, $sql) or die('Query not found');

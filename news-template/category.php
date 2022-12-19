@@ -13,6 +13,7 @@
                     <h2 class="page-heading"><?php echo $row1['category_name'] ?></h2>
                     <?php
                         include "config.php";
+                       
 
                         if(isset($_GET['cid'])){
                             $cat_id = $_GET['cid'];

@@ -2,7 +2,6 @@
 if ($_SESSION['user_role'] == 0) {
 	header("Location:http://localhost/news-template/admin/post.php");
 }
-
 ?>
 <div id="admin-content">
 	<div class="container">

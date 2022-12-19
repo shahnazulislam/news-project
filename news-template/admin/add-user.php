@@ -21,7 +21,7 @@ if (isset($_POST['save'])) {
   } else {
     $sql1 = "INSERT INTO user (first_name, last_name, username, password, role) VALUES('$firstName', '$lastName', '$userName', '$pass', '$role')";
     if (mysqli_query($conn, $sql1)) {
-      header("Location: http://localhost/news-template/admin/users.php");
+       header("Location: http://localhost/news-template/admin/users.php");
     }
   }
 }
