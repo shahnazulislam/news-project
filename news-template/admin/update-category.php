@@ -1,6 +1,6 @@
   <?php include "header.php";
 	if ($_SESSION['user_role'] == 0) {
-		header("Location:http://localhost/news-template/admin/post.php");
+		header("Location:http://localhost/Works/news-template/admin/post.php");
 	}
 	?>
   <div id="admin-content">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
-	header("location:http://localhost/news-template/admin/post.php");
+	header("location:http://localhost/Works/news-template/admin/post.php");
 }
 ?>
 <!doctype html>
@@ -51,7 +51,7 @@ if (isset($_SESSION['username'])) {
 								$_SESSION['user_id']   = $row['user_id'];
 								$_SESSION['user_role']      =   $row['role'];
 
-								header("Location:http://localhost/news-template/admin/post.php");
+								header("Location:http://localhost/Works/news-template/admin/post.php");
 							}
 						} else {
 							echo "<div class = 'alert alert-danger'>Username and Password are not match</div>";

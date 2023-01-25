@@ -17,8 +17,8 @@ if (empty($_FILES['new-image']['name'])) {
         $errors[] = "this extentions file not allowd, Please choose a jpg or png file";
     }
 
-    if ($file_size > 2097152) {
-        $errors [] = "file size must be 2mb or lower";
+    if ($file_size > 13186179) {
+        $errors [] = "file size must be 10mb or lower";
     }
 
     if (empty($errors) == true) {
@@ -33,7 +33,7 @@ $sql = "UPDATE post SET title ='{$_POST["post_title"]}', description ='{$_POST["
 
 $result = mysqli_query($conn, $sql);
 if($result){
-header("Location:http://localhost/news-template/admin/post.php");
+header("Location:http://localhost/Works/news-template/admin/post.php");
 }else{
     echo "Query faild";
 }

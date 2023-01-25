@@ -2,8 +2,8 @@
 include "header.php";
 
 if ($_SESSION['user_role'] == 0) {
-  header("Location:http://localhost/news-template/admin/post.php");
-}
+  header("Location:http://localhost/Works/news-template/admin/post.php");
+} 
 
 if (isset($_POST['save'])) {
   include "config.php";
@@ -21,7 +21,7 @@ if (isset($_POST['save'])) {
   } else {
     $sql1 = "INSERT INTO user (first_name, last_name, username, password, role) VALUES('$firstName', '$lastName', '$userName', '$pass', '$role')";
     if (mysqli_query($conn, $sql1)) {
-       header("Location: http://localhost/news-template/admin/users.php");
+       header("Location: http://localhost/Works/news-template/admin/users.php");
     }
   }
 }
@@ -67,6 +67,8 @@ if (isset($_POST['save'])) {
     	</div>
   	</div>
 </div>
+
+
 <?php
 include "footer.php";
 ?>

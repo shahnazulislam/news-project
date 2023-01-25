@@ -15,7 +15,7 @@ if (isset($_FILES['fileToUpload'])) {
         $errors[] = "this extentions file not allowd, Please choose a jpg or png file";
     }
 
-    if ($file_size > 2097152) {
+    if ($file_size > 13186179) {
         $errors [] = "file size must be 2mb or lower";
     }
 
